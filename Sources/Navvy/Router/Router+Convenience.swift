@@ -59,4 +59,16 @@ extension Router {
             }
         }
     }
+
+    public func dismissLast(completion: (() -> Void)? = nil) {
+        guard let screenType = stack.last?.screenType else {
+            assertionFailure("Stack shouldn't be empty")
+            return
+        }
+        self.perform(
+            navigation: .dismiss,
+            with: screenType,
+            completion: completion
+        )
+    }
 }

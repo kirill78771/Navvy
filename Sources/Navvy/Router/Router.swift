@@ -7,10 +7,10 @@ public protocol ScreenTypeProtocol: Equatable {
 
 public final class Router<ScreenType: ScreenTypeProtocol>: ObservableObject {
 
-    private let queue = NavigationQueue()
-    private let viewsFactory: (ScreenType) -> AnyView
-    private let presentersFactory: PresentersFactoryProtocol
-    private var stack = [PresentationContext]()
+    internal let queue = NavigationQueue()
+    internal let viewsFactory: (ScreenType) -> AnyView
+    internal let presentersFactory: PresentersFactoryProtocol
+    internal var stack = [PresentationContext]()
 
     // MARK: - Init
     
@@ -73,7 +73,7 @@ public final class Router<ScreenType: ScreenTypeProtocol>: ObservableObject {
         }
     }
 
-    private func performDismissOperation(
+    internal func performDismissOperation(
         _ screenType: ScreenType,
         completion: (() -> Void)? = nil
     ) {
@@ -98,7 +98,7 @@ public final class Router<ScreenType: ScreenTypeProtocol>: ObservableObject {
         }
     }
 
-    private func makePresentationContext(for screenType: ScreenType) -> PresentationContext {
+    internal func makePresentationContext(for screenType: ScreenType) -> PresentationContext {
         let viewModel = NavigatableScreenViewModel(
             presenters: presentersFactory.makePresenters()
         )
@@ -115,7 +115,7 @@ public final class Router<ScreenType: ScreenTypeProtocol>: ObservableObject {
         )
     }
 
-    private func cleanUpStack() {
+    internal func cleanUpStack() {
         guard let lastVisibleScreenIndex = stack.firstIndex(
             where: { !$0.screenViewModel.showsView }
         ) else {
@@ -124,7 +124,7 @@ public final class Router<ScreenType: ScreenTypeProtocol>: ObservableObject {
         self.stack = Array(self.stack[0...lastVisibleScreenIndex])
     }
 
-    private func view(
+    internal func view(
         for context: PresentationContext
     ) -> AnyView {
         let view = viewsFactory(context.screenType)
