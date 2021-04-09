@@ -118,7 +118,7 @@ public final class Router<ScreenType: ScreenTypeProtocol>: ObservableObject {
     internal func cleanUpStack() {
         guard let lastVisibleScreenIndex = stack.firstIndex(
             where: { !$0.screenViewModel.showsView }
-        ) else {
+        ), lastVisibleScreenIndex != self.stack.indices.last else {
             return
         }
         self.stack = Array(self.stack[0...lastVisibleScreenIndex])
