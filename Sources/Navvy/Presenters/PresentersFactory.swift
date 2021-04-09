@@ -5,15 +5,15 @@ public protocol PresentersFactoryProtocol: AnyObject {
 }
 
 public final class PresentersFactory: PresentersFactoryProtocol {
-    private let customPresenters: [Presenter]
-    public init(customPresenters: [Presenter] = []) {
+    private let customPresenters: [Presenter.Type]
+    public init(customPresenters: [Presenter.Type] = []) {
         self.customPresenters = customPresenters
     }
     public func makePresenters() -> [Presenter] {
         var presenters = [
             SheetPresenter(),
             NavigationLinkPresenter(),
-        ] + customPresenters
+        ] + customPresenters.map { $0.init() }
         if #available(iOS 14.0, *) {
             presenters.append(FullScreenCoverPresenter())
         }
