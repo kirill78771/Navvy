@@ -102,10 +102,10 @@ public final class Router<ScreenType: ScreenTypeProtocol>: ObservableObject {
         let viewModel = NavigatableScreenViewModel(
             presenters: presentersFactory.makePresenters()
         )
-        let subscriptions: [Cancellable] = viewModel.showsViewPublishers.map {
-            $0.sink { [weak self] isVisible in
-                guard !isVisible else { return }
-                self?.cleanUpStack()
+        let subscriptions: [Cancellable] = viewModel.showsViewPublishers.map { [weak viewModel] in
+            $0.sink { [weak self] isPresenting in
+                guard !isPresenting, let viewModel = viewModel else { return }
+                self?.cleanStack(after: viewModel)
             }
         }
         return PresentationContext(
@@ -115,10 +115,10 @@ public final class Router<ScreenType: ScreenTypeProtocol>: ObservableObject {
         )
     }
 
-    internal func cleanUpStack() {
+    internal func cleanStack(after viewModel: NavigatableScreenViewModel) {
         guard let lastVisibleScreenIndex = stack.firstIndex(
-            where: { !$0.screenViewModel.showsView }
-        ), lastVisibleScreenIndex != self.stack.indices.last else {
+            where: { $0.screenViewModel === viewModel }
+        ) else {
             return
         }
         self.stack = Array(self.stack[0...lastVisibleScreenIndex])
