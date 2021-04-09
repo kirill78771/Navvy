@@ -26,7 +26,7 @@ open class Presenter: PresenterProtocol {
         fatalError("Override in subclass")
     }
 
-    public init() { }
+    public required init() { }
 }
 
 // MARK: - Default presenters
