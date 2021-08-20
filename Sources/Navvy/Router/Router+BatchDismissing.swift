@@ -5,7 +5,7 @@ extension Router {
 
     internal func dismissAsFuture(_ screenType: ScreenType) -> Deferred<Future<Void, Never>> {
         Deferred {
-            Future() { promise in
+            Future { promise in
                 self.dismiss(screenType) {
                     promise(Result.success(()))
                 }
