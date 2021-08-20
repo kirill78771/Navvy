@@ -17,7 +17,7 @@ extension Router {
         _ screenTypes: [ScreenType],
         completion: (() -> Void)? = nil
     ) {
-        batchDismissingSubscription = screenTypes
+        screenTypes
             .map { dismissAsFuture($0) }
             .serialize()?
             .sink(
@@ -25,5 +25,6 @@ extension Router {
                     completion?()
                 }, receiveValue: { }
             )
+            .store(in: &disposeBag)
     }
 }

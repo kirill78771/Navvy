@@ -12,7 +12,7 @@ public final class Router<ScreenType: ScreenTypeProtocol>: ObservableObject {
     internal let presentersFactory: PresentersFactoryProtocol
     internal var stack = [PresentationContext]()
 
-    internal var batchDismissingSubscription: AnyCancellable?
+    internal var disposeBag = Set<AnyCancellable>()
     
     // MARK: - Init
     
