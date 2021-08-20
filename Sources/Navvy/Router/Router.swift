@@ -12,6 +12,8 @@ public final class Router<ScreenType: ScreenTypeProtocol>: ObservableObject {
     internal let presentersFactory: PresentersFactoryProtocol
     internal var stack = [PresentationContext]()
 
+    internal var disposeBag = Set<AnyCancellable>()
+    
     // MARK: - Init
     
     public init<T: ViewsFactoryProtocol>(
