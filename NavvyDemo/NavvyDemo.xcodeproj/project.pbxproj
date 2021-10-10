@@ -26,6 +26,7 @@
 		B4F738D92713301900972A88 /* Router+BatchDismissing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F738CB2713301900972A88 /* Router+BatchDismissing.swift */; };
 		B4F738DA2713301900972A88 /* Router+Dismissing.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F738CC2713301900972A88 /* Router+Dismissing.swift */; };
 		B4F738DC2713328E00972A88 /* ViewsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F738DB2713328E00972A88 /* ViewsFactory.swift */; };
+		B4F738DE2713814D00972A88 /* TargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4F738DD2713814C00972A88 /* TargetView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		B4F738CB2713301900972A88 /* Router+BatchDismissing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Router+BatchDismissing.swift"; sourceTree = "<group>"; };
 		B4F738CC2713301900972A88 /* Router+Dismissing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Router+Dismissing.swift"; sourceTree = "<group>"; };
 		B4F738DB2713328E00972A88 /* ViewsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewsFactory.swift; sourceTree = "<group>"; };
+		B4F738DD2713814C00972A88 /* TargetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TargetView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			children = (
 				B4F738BE2713301900972A88 /* PresentersFactory.swift */,
 				B4F738BF2713301900972A88 /* Presenter.swift */,
+				B4F738DD2713814C00972A88 /* TargetView.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 				B4F738D52713301900972A88 /* View+Navigating.swift in Sources */,
 				B4F738D72713301900972A88 /* Router+Presenting.swift in Sources */,
 				B4F738AB2713300800972A88 /* NavvyDemoApp.swift in Sources */,
+				B4F738DE2713814D00972A88 /* TargetView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

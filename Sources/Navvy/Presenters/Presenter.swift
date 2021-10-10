@@ -38,7 +38,7 @@ public final class SheetPresenter: Presenter {
     }
     
     public override func viewAppendix(destinationViewProvider: @escaping () -> AnyView) -> AnyView {
-        EmptyView().sheet(
+        TargetView().sheet(
             isPresented: isPresentingBinding,
             content: { destinationViewProvider() }
         ).toAnyView()
@@ -55,7 +55,7 @@ public final class NavigationLinkPresenter: Presenter {
         NavigationLink(
             destination: destinationViewProvider(),
             isActive: isPresentingBinding,
-            label: { EmptyView() }
+            label: { TargetView() }
         ).toAnyView()
     }
 }
@@ -68,7 +68,7 @@ public final class FullScreenCoverPresenter: Presenter {
     }
 
     public override func viewAppendix(destinationViewProvider: @escaping () -> AnyView) -> AnyView {
-        EmptyView().compatibleFullScreen(
+        TargetView().compatibleFullScreen(
             isPresented: isPresentingBinding,
             content: { destinationViewProvider() }
         ).toAnyView()
