@@ -72,6 +72,7 @@ struct SheetView: View {
 struct PushView: View {
     var body: some View {
         Text("Push")
+            .navigationBarBackButtonHidden(true)
             .navigationBarItems(leading:
                 Button("Back", action: {
                     router.dismissLast(completion: nil)
