@@ -1,10 +1,6 @@
 import SwiftUI
 import Combine
 
-// TODO:
-// 1. Safe & typed presentation type
-// 2. Type erasure for protocol instead of abstract class
-
 public protocol PresenterProtocol: ObservableObject, Identifiable {
     static var presentationType: String { get }
     var isPresenting: Bool { get set }
