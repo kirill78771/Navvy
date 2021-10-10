@@ -69,8 +69,11 @@ public final class Router<ScreenType: ScreenTypeProtocol>: ObservableObject {
             let view = self.view(
                 for: context
             )
-            let presentingModel = self.stack.last?.screenViewModel
-            presentingModel?.show(view, presentationType: presentationType, completion: completion)
+            guard let presentingModel = self.stack.last?.screenViewModel else {
+                assertionFailure("Set root view first")
+                return
+            }
+            presentingModel.show(view, presentationType: presentationType, completion: completion)
             self.stack.append(context)
         }
     }
